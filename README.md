@@ -15,7 +15,7 @@ A modern vanilla JavaScript to-do list web app featuring a custom green checkbox
 - Fade-in animation on page load and hover effects for buttons and checkboxes.
 
 ## Screenshots
-![Light Mode]()  
+![Light Mode](https://github.com/Chandrashekhar-K-E/Smart-Todo/blob/3a7b322b407cff2f45ca9bf139c6bcf42fa56e9e/Screenshot%202025-06-10%20230859.png)  
 ![Dark Mode]()
 
 #Technologies Used
