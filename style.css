@@ -1,0 +1,348 @@
+:root {
+  --primary: #a1c4fd;
+  --accent: #81a1c1;
+  --background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  --container-bg: white;
+  --task-bg: #f9f9f9;
+  --task-dragging-bg: #e6f0fa;
+  --text-color: #333;
+  --secondary-text: #666;
+  --filter-bg: #e0e0e0;
+  --delete-bg: #ff4d4d;
+  --delete-hover: #e63939;
+  --check-bg: #2ecc71;
+  --check-hover: #27ae60;
+}
+
+[data-theme="dark"] {
+  --primary: #4a69bd;
+  --accent: #6b7280;
+  --background: linear-gradient(135deg, #2c3e50, #4a69bd);
+  --container-bg: #1a202c;
+  --task-bg: #2d3748;
+  --task-dragging-bg: #4a5568;
+  --text-color: #e2e8f0;
+  --secondary-text: #a0aec0;
+  --filter-bg: #4a5568;
+  --delete-bg: #e53e3e;
+  --delete-hover: #c53030;
+  --check-bg: #2ecc71;
+  --check-hover: #27ae60;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--background);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+
+.container {
+  background: var(--container-bg);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: var(--text-color);
+  text-align: center;
+  font-size: 2.5em;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#themeToggle {
+  background: var(--primary);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#themeToggle:hover {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#taskInput, #dueDateInput {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background: var(--container-bg);
+  color: var(--text-color);
+}
+
+#taskInput:focus, #dueDateInput:focus {
+  border-color: var(--accent);
+}
+
+#dueDateInput::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+}
+
+[data-theme="dark"] #dueDateInput {
+  background: var(--container-bg);
+  color: var(--text-color);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] #dueDateInput::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.task-item input[type="date"] {
+  background: var(--container-bg);
+  color: var(--text-color);
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 16px;
+  outline: none;
+  margin-right: 10px;
+  width: 150px;
+}
+
+[data-theme="dark"] .task-item input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+#addTaskBtn {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#addTaskBtn:hover {
+  background-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  padding: 8px 15px;
+  font-size: 14px;
+  background-color: var(--filter-bg);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: scale(1.05);
+}
+
+#taskList {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  background: var(--task-bg);
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.task-item.dragging {
+  opacity: 0.5;
+  background: var(--task-dragging-bg);
+  cursor: default;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.task-item:not([draggable="true"]) {
+  cursor: default;
+}
+
+.task-check {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--check-bg);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+}
+
+.task-check.checked {
+  background-color: var(--check-bg);
+}
+
+.task-check:hover {
+  background-color: var(--check-hover);
+}
+
+.task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-text {
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  color: var(--secondary-text);
+}
+
+.task-due-date {
+  font-size: 14px;
+  color: var(--secondary-text);
+  margin-top: 5px;
+}
+
+.task-item input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  outline: none;
+  margin-right: 10px;
+  background: var(--container-bg);
+  color: var(--text-color);
+}
+
+.edit-btn, .delete-btn, .save-btn {
+  padding: 8px 15px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-btn {
+  background-color: var(--primary);
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background-color: var(--delete-bg);
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: var(--delete-hover);
+  transform: scale(1.05);
+}
+
+.save-btn {
+  background-color: var(--primary);
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: var(--accent);
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 500px) {
+  .container {
+      padding: 20px;
+  }
+
+  h1 {
+      font-size: 2em;
+  }
+
+  .header {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+  }
+
+  .input-container {
+      flex-direction: column;
+  }
+
+  #taskInput, #dueDateInput, #addTaskBtn {
+      width: 100%;
+  }
+
+  .task-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+  }
+
+  .task-item input[type="date"] {
+      width: 100%;
+  }
+
+  .edit-btn, .delete-btn, .save-btn {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 5px;
+  }
+}
