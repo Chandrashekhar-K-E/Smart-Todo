@@ -16,7 +16,7 @@ A modern vanilla JavaScript to-do list web app featuring a custom green checkbox
 
 ## Screenshots
 ![Light Mode](https://github.com/Chandrashekhar-K-E/Smart-Todo/blob/3a7b322b407cff2f45ca9bf139c6bcf42fa56e9e/Screenshot%202025-06-10%20230859.png)  
-![Dark Mode]()
+![Dark Mode](https://github.com/Chandrashekhar-K-E/Smart-Todo/blob/c6947346385cbea4ea7301eba836298f472a3a38/Screenshot%202025-06-10%20230941.png)
 
 #Technologies Used
 HTML5: Structure for the app’s layout, including task list, inputs, and buttons.
