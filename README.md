@@ -15,13 +15,17 @@ A modern vanilla JavaScript to-do list web app featuring a custom green checkbox
 - Fade-in animation on page load and hover effects for buttons and checkboxes.
 
 ## Screenshots
-![Light Mode](https://github.com/Chandrashekhar-K-E/Smart-Todo/blob/3a7b322b407cff2f45ca9bf139c6bcf42fa56e9e/Screenshot%202025-06-10%20230859.png)  
-![Dark Mode](https://github.com/Chandrashekhar-K-E/Smart-Todo/blob/c6947346385cbea4ea7301eba836298f472a3a38/Screenshot%202025-06-10%20230941.png)
+![Light Mode](https://github.com/Chandrashekhar-K-E/Smart-Todo/blob/3a7b322b407cff2f45ca9bf139c6bcf42fa56e9e/Screenshot%202025-06-10%20230859.png "Light Mode.")  
+![Dark Mode](https://github.com/Chandrashekhar-K-E/Smart-Todo/blob/c6947346385cbea4ea7301eba836298f472a3a38/Screenshot%202025-06-10%20230941.png "Dark Mode.")
 
 #Technologies Used
+
 HTML5: Structure for the app’s layout, including task list, inputs, and buttons.
+
 CSS3: Styling with custom properties (e.g., --primary: #a1c4fd, --check-bg: #2ecc71), gradients, animations, and responsive design via media queries.
+
 JavaScript: Vanilla JS for task management, drag-and-drop, filtering, theme toggling, and Local Storage integration.
+
 Local Storage: Persists tasks and theme preferences.
 
 - 
