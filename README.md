@@ -28,4 +28,3 @@ JavaScript: Vanilla JS for task management, drag-and-drop, filtering, theme togg
 
 Local Storage: Persists tasks and theme preferences.
 
-- 
